@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "7fc4b20c-bb09-4570-904c-455d70f7e5e0",
+		"name": "pics-io-collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15230320",
+		"_collection_link": "https://crimson-meadow-147340.postman.co/workspace/Kiseki~f491b42e-c1a0-4bd7-a858-6423dea9f0fd/collection/15230320-7fc4b20c-bb09-4570-904c-455d70f7e5e0?action=share&source=collection_link&creator=15230320"
+	},
+	"item": [
+		{
+			"name": "SignIn",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\": \"user\",\r\n    \"password\": \"1111\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/signIn",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"signIn"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/refresh",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"refresh"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SignUp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n               \"email\": \"SomeEmail@gmail.com\",\r\n               \"password\": \"1111\",\r\n               \"userName\": \"user\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/signUp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"signUp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Auth]DestinationProcessing",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWNhYjcxZWUzMjc4NGRkNDQ0Y2M4MGMiLCJlbWFpbCI6IlNvbWVFbWFpbEBnbWFpbC5jb20iLCJpYXQiOjE3MDc4MTU2ODgsImV4cCI6MTcwNzgxOTI4OH0.OndIZRJljipJo3-r8IDToHGI5EmMXKrxU36MTbr6GS8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"payload\": { \"message\": \"message\" },\r\n\t\"possibleDestinations\": [\r\n\t\t{\r\n\t\t\t\"destination1\": true,\r\n\t\t\t\"destination2\": true,\r\n\t\t\t\"destination3\": true\r\n\t\t}, \r\n\t\t{\r\n\t\t\t\"destination1\": false,\r\n\t\t\t\"destination3\": false\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"destination1\": true,\r\n\t\t\t\"destination2\": false,\r\n\t\t\t\"destination4\": false\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"destination1\": true\r\n\t\t}\r\n\t]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/destination",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"destination"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

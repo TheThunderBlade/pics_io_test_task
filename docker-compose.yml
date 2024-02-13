@@ -1,0 +1,28 @@
+version: '3.3'
+services:
+  main:
+    container_name: main
+    build:
+      context: .
+    env_file:
+      - ./.env
+    ports:
+      - 8000:8000
+    depends_on:
+      - mongo
+    restart: always
+
+  mongo:
+    ports:
+      - '27017:27017'
+    container_name: mongo
+    restart: always
+    logging:
+      options:
+        max-size: 1g
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    volumes:
+      - ./_volumes/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    image: mongo
