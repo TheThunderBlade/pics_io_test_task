@@ -97,6 +97,28 @@ class destinationService {
     return result;
   };
 
+  private _handleCustomStrategy = async (
+    payload: object,
+    parsedDestinations: IParsedEvent,
+    strategy: string
+  ) => {
+    const result: { [key: string]: boolean } = {};
+    const func = eval(strategy);
+    const requsets = [];
+
+    for (const key in parsedDestinations) {
+      const shouldSend = func();
+      result[key] = shouldSend;
+      if (shouldSend) {
+        requsets.push(this._sendPayloadToDestination(payload, key));
+      }
+    }
+
+    await Promise.all(requsets);
+
+    return result;
+  };
+
   routeEvent = async ({ payload, possibleDestinations, strategy }: IEvent) => {
     const currentStrategy = strategy || "ANY";
 
@@ -129,7 +151,12 @@ class destinationService {
         );
         break;
       default:
-        throw apiError.badRequest("Unknown strategy");
+        generatedResponse = await this._handleCustomStrategy(
+          payload,
+          parsedDestinations,
+          strategy!
+        );
+        break;
     }
 
     await db.Destination.create({
