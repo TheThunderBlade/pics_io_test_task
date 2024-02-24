@@ -39,6 +39,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "@elastic/elasticsearch": "^8.12.1",
     "@types/mongoose": "^5.11.97",
     "bcrypt": "^5.1.1",
     "cookie-parser": "^1.4.6",
